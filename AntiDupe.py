@@ -16,6 +16,11 @@ class AntiDupe:
         async for m in self.bot.logs_from(message.channel, 1, before=message):
             lastmsg = m
 
+        # Don't do anything if there are attachments
+        if message.attachments[0] is not None or \
+           lastmsg.attachments[0] is not None:
+            return
+
         if lastmsg is not None and \
            lastmsg.author.display_name == message.author.display_name and \
            lastmsg.clean_content == message.clean_content:
