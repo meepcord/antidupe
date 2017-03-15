@@ -13,8 +13,8 @@ class AntiDupe:
 
     async def dedupe(self, message):
         lastmsg = None
-        async for message in self.bot.logs_from(message.channel, 1, before=message):
-            lastmsg = message
+        async for msg in self.bot.logs_from(message.channel, 1, before=message):
+            lastmsg = msg
 
         if lastmsg is not None:
             if lastmsg.author.display_name == message.author.display_name:
