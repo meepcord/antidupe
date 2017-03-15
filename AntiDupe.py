@@ -17,8 +17,8 @@ class AntiDupe:
             lastmsg = m
 
         # Don't do anything if there are attachments
-        if message.attachments[0] is not None or \
-           lastmsg.attachments[0] is not None:
+        if message.attachments[0] or \
+           lastmsg.attachments[0]:
             return
 
         if lastmsg is not None and \
