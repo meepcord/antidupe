@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-import os
 import aiohttp
 
 
@@ -17,8 +16,8 @@ class AntiDupe:
             lastmsg = m
 
         # Don't do anything if there are attachments
-        if message.attachments[0] or \
-           lastmsg.attachments[0]:
+        if not message.clean_content or \
+           not lastmsg.clean_content:
             # Debugging
             print("attachments: \n" + message.attachments +
                   "\n" + lastmsg.attachments)
